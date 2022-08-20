@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'registartion.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'icon.jpg' %}">
+    <script src="https://kit.fontawesome.com/1fcd11c729.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <section class="vh-100" style="background-image: url('{% static 'mpic1.jpg' %}');background-size:cover;">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100 ">
+            <div class="col col-xl-10">
+              <div class="card shadow-lg p-3 card-registration" style="border-radius: 1rem;">
+                <div class="row g-0">
+                  <div class="col-xl-6 p-3 d-none d-xl-block shadow " style="border-radius: 1rem;">
+                    <img
+                      src="{% static 'y.png' %}"
+                      alt="Sample photo"
+                      class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                    />
+                  </div>
+                  <div class="col-xl-6">
+                    <form class="card-body p-md-4 text-black" method="post">
+                      {% csrf_token %}
+                      <h3 class="mb-5 text-uppercase">Store-Management registration form</h3>
+                      {% include 'partials/_alerts.html' %}
+                        <div class="mb-3">
+                          <div class="form-outline">
+                            <label for="Name" aria-placeholder="Name">Name</label>
+                            {{ form.username }}
+                          </div>
+                        </div>
+                        <div class=" mb-3">
+                            <div class="form-outline mb-3">
+                              <label for="email">Email</label>
+                              {{ form.email}}
+                              </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-outline">
+                              <label for="password">Password</label>
+                              {{ form.password1 }}
+                            </div>
+                          </div>
+                      <div class="form-outline mb-3">
+                        <label for="password">confirm Password</label>
+                        {{ form.password2 }}
+                      </div>
+                      <div class="form-check">
+                        {{ form.is_admin }}
+                        <label class="control control--checkbox mb-0"><span class="caption">Manager</span>
+                          
+                        <div class="control__indicator"></div>
+                        </label>
+                      </div>
+                      <span class="text-error">{{ form.errors }}</span>
+                      <div class="d-flex justify-content-between p-2">
+                      
+                      <div class="d-flex justify-content-end pt-2">
+                        <button type="reset" class="btn form-outline btn-light btn-lg shadow">Reset all</button>
+                        <input type="submit" name="Register" class="btn btn-warning btn-lg ms-2 shadow"></input>
+                      </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+</body>
+
+<script>
+  jQuery(document).setTimeout(function(){
+      $('#message').fadeOut('slow');
+  },3000);
+</script>
+</html>

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Sales</a></li>
+                            <li class="active">Forecasted Sales</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="content">
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="box-title">Product List </h4>
+            </div>
+            <div class="card-body--">
+                <div class="table-stats order-table ov-h">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th class="serial">#</th>
+                                <th>Name</th>
+                                <th>Forecast sales</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if forecast1 %}
+                            {% for key,values in forecast1.items %}
+                            <tr>
+                                <td class="serial">{{ forloop.counter }}</td>
+                                <td>{{ key }}</td>
+                                <td>{{ values }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                                <tr><td>No Product Data</td></tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div> <!-- /.table-stats -->
+            </div>
+        </div> <!-- /.card -->
+    </div>  <!-- /.col-lg-8 -->
+</div>    
+</div>
+<div class="clearfix"></div>
+{% endblock content %} 
